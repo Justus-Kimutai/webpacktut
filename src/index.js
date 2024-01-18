@@ -1,15 +1,9 @@
 import sembe from './sembe.jpg'
+import menuModule from './menu';
+import contactModule from './contacts';
+import './style.css'
 
-function component(){
-    const landingPage = document.createElement('div');
-    landingPage.classList.add('landingPage')
-    landingPage.classList.add('container')
-
-    // Add the image to our existing div.
-    const myIcon = new Image();
-    myIcon.src = sembe;
-    myIcon.classList.add('landing-img')
-
+function header(){
     const header = document.createElement('div');
     header.classList.add('header');
 
@@ -23,20 +17,48 @@ function component(){
 
     const home = document.createElement('li');
     home.classList.add('nav--item');
+    home.classList.add('nav-item--home');
     home.textContent = 'home'
     navList.appendChild(home);
+    home.addEventListener('click',()=>{
+        contentDiv.textContent = ''
+        contentDiv.appendChild(component());
+    })
 
     const menu = document.createElement('li');
     menu.classList.add('nav--item');
-    menu.textContent = 'home'
+    menu.classList.add('nav-item--menu');
+    menu.textContent = 'menu'
     navList.appendChild(menu);
+    menu.addEventListener('click',()=>{
+        contentDiv.textContent = ''
+        contentDiv.appendChild(menuModule());
+    })
 
     const contact = document.createElement('li');
     contact.classList.add('nav--item');
-    contact.textContent = 'home'
+    contact.classList.add('nav-item--contact');
+    contact.textContent = 'contact'
     navList.appendChild(contact);
+    contact.addEventListener('click',()=>{
+        contentDiv.textContent = ''
+        contentDiv.appendChild(contactModule());
+    })
 
     header.appendChild(navList);
+
+    return header;
+}
+
+function component(){
+    const landingPage = document.createElement('div');
+    landingPage.classList.add('landingPage')
+    landingPage.classList.add('container')
+
+    // Add the image to our existing div.
+    const myIcon = new Image();
+    myIcon.src = sembe;
+    myIcon.classList.add('landing-img')
 
     const title = document.createElement('h1');
     title.classList.add('title-text');
@@ -51,12 +73,16 @@ function component(){
     callToAction.textContent = 'Book a shade';
 
     landingPage.appendChild(myIcon)
-    landingPage.appendChild(header)
+    landingPage.appendChild(header())
     landingPage.appendChild(title)
     landingPage.appendChild(captionText)
     landingPage.appendChild(callToAction)
 
     return landingPage;
 }
+export default header
+
 const contentDiv = document.getElementById('content');
-// contentDiv.appendChild(component())
+
+contentDiv.appendChild(component());
+
