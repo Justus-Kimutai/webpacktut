@@ -23,7 +23,8 @@ img{
     justify-content: space-between;
     align-items: center;
 }
-.landing-img{
+.landing-img,
+.contact-img{
     position: absolute;
     top: 8vh;
     left: 50%;
@@ -96,4 +97,27 @@ img{
 .callToAction:focus{
     opacity: .7;
     cursor: pointer;
+}
+
+/* menu */
+.food-items--grid{
+    display: flex;
+    gap:2em;
+    justify-content: center;
+    flex-direction: column;
+}
+.flex-item{
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+}
+.flex-item--first{
+    margin-top:2em;
+}
+.contacts{
+    margin-top: 10%;
+    color: orange;
+    font-weight: bolder;
+    font-size: larger;
+    text-shadow: 1.25em 1.25em 1.75em rgba(0,0,0);
 }
